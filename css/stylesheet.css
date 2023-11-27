@@ -1,0 +1,15 @@
+:root {
+  --primery-text-color: #757575;
+  --background-color: #ffffff;
+  --selection-color: #212121;
+  --accent-color: #2196f3;
+  --section-color: #e5e5e5;
+  --button-bg-color: #f5f4fa;
+  --footer-color: rgba(255, 255, 255, 0.6);
+  --hero-color: #2f303a;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primery-text-color);
+}
