@@ -9,9 +9,9 @@
     <style>
         body {
             margin: 0;
-            /* Remove default margin */
+            /* Видалення стандартного відступу */
             padding: 0;
-            /* Remove default padding */
+            /* Видалення стандартного відступу */
             background-color: #408080;
         }
 
@@ -21,28 +21,59 @@
 
         header h1 {
             margin: 0;
-            /* Remove margin for the h1 element */
+            /* Видалення відступу для елемента h1 */
             color: black;
-            /* Set text color to your desired color */
+            /* Встановлення кольору тексту на ваш вибір */
         }
 
         .separator {
             width: 100%;
-            /* Set the width to cover the full viewport width */
+            /* Встановлення ширини на весь розмір вікна */
             height: 2px;
-            /* Set the height of the line */
+            /* Встановлення висоти лінії */
             background-color: #fff;
-            /* Set the background color to white */
+            /* Встановлення кольору фону на білий */
         }
 
         section {
             padding: 20px;
-            /* Add padding for spacing */
+            /* Додавання відступу для проміжку */
             text-align: left;
         }
 
         section h2 button {
             border-radius: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -60,7 +91,6 @@
         <h1>Modeling of characteristics of highly efficient textured solar cells based on c-silicon. The influence of
             recombination in the space charge region</h1>
         <p>A.V. Sachenko, V.P. Kostylyov, V.M. Vlasiuk, I.O. Sokolovskyi, M.A. Evstigneev, T.V. Slusar, V.V. Chernenko
-        </p>
         <ol type="1">
             <!-- Start the list with '¹' -->
             &#185;. V. Lashkaryov Institute of Semiconductor Physics, NAS of Ukraine, 41, prospect Nauky, 03680 Kyiv,
@@ -73,6 +103,7 @@
         </ol>
     </header>
 
+    Кмітливий Ворон, [29.11.2023 10:42]
     <section>
         <p><strong>Abstract.</strong> Theoretical modeling of the optical and photovoltaic characteristics of highly
             efficient textured silicon solar cells (SC), including short-circuit current, open-circuit voltage and
@@ -96,7 +127,6 @@
             photocurrent, short-circuit current, open-circuit voltage, photoconversion efficiency.</p>
     </section>
 
-    Кмітливий Ворон, [26.11.2023 14:56]
     <section>
         <a href="test">Full Text (PDF)</a>
         <h2>
@@ -106,14 +136,95 @@
             <!-- Тут можна додати вміст для посилань -->
         </div>
     </section>
+    <section>
+        <!-- Existing content -->
 
+        <!-- Add four input fields and a form for user data -->
+        <form id="userInputForm">
+            <label for="field1">Field 1:</label>
+            <input type="text" id="field1" name="field1">
+
+            <label for="field2">Field 2:</label>
+            <input type="text" id="field2" name="field2">
+
+            <label for="field3">Field 3:</label>
+            <input type="text" id="field3" name="field3">
+
+            <label for="field4">Field 4:</label>
+            <input type="text" id="field4" name="field4">
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </section>
     <script>
         function toggleReferences() {
             var referencesDiv = document.getElementById('references');
             referencesDiv.style.display = referencesDiv.style.display === 'none' ? 'block' : 'none';
         }
     </script>
+    <script>
+        function toggleReferences() {
+            var referencesDiv = document.getElementById('references');
+            referencesDiv.style.display = referencesDiv.style.display === 'none' ? 'block' : 'none';
+        }
 
+        function submitForm() {
+            var field1Value = document.getElementById('field1').value;
+            var field2Value = document.getElementById('field2').value;
+            var field3Value = document.getElementById('field3').value;
+            var field4Value = document.getElementById('field4').value;
+
+            // Replace the following with your desired logic for handling the input data
+            console.log("Field 1:", field1Value);
+            console.log("Field 2:", field2Value);
+            console.log("Field 3:", field3Value);
+            console.log("Field 4:", field4Value);
+        }
+    </script>
+    <script>
+        function submitForm() {
+            var field1Value = document.getElementById('field1').value;
+            var field2Value = document.getElementById('field2').value;
+            var field3Value = document.getElementById('field3').value;
+            var field4Value = document.getElementById('field4').value;
+
+            // Create HTML content with form data
+            var htmlContent = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Generated HTML</title>
+                <!-- Add your styles here if needed -->
+            </head>
+            <body>
+                <h1>Generated HTML with Form Data</h1>
+                <p>Field 1: ${field1Value}</p>
+                <p>Field 2: ${field2Value}</p>
+                <p>Field 3: ${field3Value}</p>
+                <p>Field 4: ${field4Value}</p>
+            </body>
+            </html>
+        `;
+
+            // Convert the HTML content to a Blob
+            var blob = new Blob([htmlContent], { type: 'text/html' });
+
+            // Create a download link
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'generated_html.html';
+
+            // Append the link to the document and trigger a click
+            document.body.appendChild(link);
+            link.click();
+
+            // Remove the link from the document
+            document.body.removeChild(link);
+        }
+    </script>
 </body>
 
 </html>
