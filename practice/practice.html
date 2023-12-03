@@ -9,10 +9,12 @@
     <style>
         body {
             margin: 0;
-            /* Видалення стандартного відступу */
             padding: 0;
-            /* Видалення стандартного відступу */
             background-color: #408080;
+            color: white;
+            /* Set text color to white */
+            font-family: Arial, sans-serif;
+            /* Use a sans-serif font */
         }
 
         header {
@@ -21,23 +23,17 @@
 
         header h1 {
             margin: 0;
-            /* Видалення відступу для елемента h1 */
             color: black;
-            /* Встановлення кольору тексту на ваш вибір */
         }
 
         .separator {
             width: 100%;
-            /* Встановлення ширини на весь розмір вікна */
             height: 2px;
-            /* Встановлення висоти лінії */
             background-color: #fff;
-            /* Встановлення кольору фону на білий */
         }
 
         section {
             padding: 20px;
-            /* Додавання відступу для проміжку */
             text-align: left;
         }
 
@@ -88,9 +84,10 @@
 
     <header>
         <div class="separator"></div>
-        <h1>Modeling of characteristics of highly efficient textured solar cells based on c-silicon. The influence of
-            recombination in the space charge region</h1>
+        <h1 id="articleTitle">Modeling of characteristics of highly efficient textured solar cells based on c-silicon.
+            The influence of recombination in the space charge region</h1>
         <p>A.V. Sachenko, V.P. Kostylyov, V.M. Vlasiuk, I.O. Sokolovskyi, M.A. Evstigneev, T.V. Slusar, V.V. Chernenko
+        </p>
         <ol type="1">
             <!-- Start the list with '¹' -->
             &#185;. V. Lashkaryov Institute of Semiconductor Physics, NAS of Ukraine, 41, prospect Nauky, 03680 Kyiv,
@@ -103,8 +100,7 @@
         </ol>
     </header>
 
-    Кмітливий Ворон, [29.11.2023 10:42]
-    <section>
+    <section id="articleContent">
         <p><strong>Abstract.</strong> Theoretical modeling of the optical and photovoltaic characteristics of highly
             efficient textured silicon solar cells (SC), including short-circuit current, open-circuit voltage and
             photoconversion efficiency, has been performed in this work. In the modeling, such recombination mechanisms
@@ -136,32 +132,25 @@
             <!-- Тут можна додати вміст для посилань -->
         </div>
     </section>
+
     <section>
-        <!-- Existing content -->
-
-        <!-- Add four input fields and a form for user data -->
         <form id="userInputForm">
-            <label for="field1">Field 1:</label>
-            <input type="text" id="field1" name="field1">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
 
-            <label for="field2">Field 2:</label>
-            <input type="text" id="field2" name="field2">
+            <label for="authors">Authors:</label>
+            <textarea id="authors" name="authors" rows="4" required></textarea>
 
-            <label for="field3">Field 3:</label>
-            <input type="text" id="field3" name="field3">
+            <label for="abstract">Abstract:</label>
+            <textarea id="abstract" name="abstract" rows="8" required></textarea>
 
-            <label for="field4">Field 4:</label>
-            <input type="text" id="field4" name="field4">
+            <label for="keywords">Keywords:</label>
+            <input type="text" id="keywords" name="keywords" required>
 
             <button type="button" onclick="submitForm()">Submit</button>
         </form>
     </section>
-    <script>
-        function toggleReferences() {
-            var referencesDiv = document.getElementById('references');
-            referencesDiv.style.display = referencesDiv.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+
     <script>
         function toggleReferences() {
             var referencesDiv = document.getElementById('references');
@@ -169,60 +158,29 @@
         }
 
         function submitForm() {
-            var field1Value = document.getElementById('field1').value;
-            var field2Value = document.getElementById('field2').value;
-            var field3Value = document.getElementById('field3').value;
-            var field4Value = document.getElementById('field4').value;
+            var titleValue = document.getElementById('title').value;
+            var authorsValue = document.getElementById('authors').value;
+            var abstractValue = document.getElementById('abstract').value;
+            var keywordsValue = document.getElementById('keywords').value;
 
-            // Replace the following with your desired logic for handling the input data
-            console.log("Field 1:", field1Value);
-            console.log("Field 2:", field2Value);
-            console.log("Field 3:", field3Value);
-            console.log("Field 4:", field4Value);
-        }
-    </script>
-    <script>
-        function submitForm() {
-            var field1Value = document.getElementById('field1').value;
-            var field2Value = document.getElementById('field2').value;
-            var field3Value = document.getElementById('field3').value;
-            var field4Value = document.getElementById('field4').value;
+            var newSection = document.createElement('section');
+            newSection.innerHTML = `
+        <h1>${titleValue}</h1>
+        
+        <section>
+            <p><strong>Authors:</strong> ${authorsValue}</p>
+        </section>
 
-            // Create HTML content with form data
-            var htmlContent = `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Generated HTML</title>
-                <!-- Add your styles here if needed -->
-            </head>
-            <body>
-                <h1>Generated HTML with Form Data</h1>
-                <p>Field 1: ${field1Value}</p>
-                <p>Field 2: ${field2Value}</p>
-                <p>Field 3: ${field3Value}</p>
-                <p>Field 4: ${field4Value}</p>
-            </body>
-            </html>
-        `;
+        <section id="articleContent">
+            <p><strong>Abstract.</strong> ${abstractValue}</p>
+        </section>
 
-            // Convert the HTML content to a Blob
-            var blob = new Blob([htmlContent], { type: 'text/html' });
+        <section>
+            <p><strong>Keywords.</strong> ${keywordsValue}</p>
+        </section>
+    `;
 
-            // Create a download link
-            var link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'generated_html.html';
-
-            // Append the link to the document and trigger a click
-            document.body.appendChild(link);
-            link.click();
-
-            // Remove the link from the document
-            document.body.removeChild(link);
+            document.body.appendChild(newSection);
         }
     </script>
 </body>
