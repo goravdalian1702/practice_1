@@ -163,7 +163,11 @@
             var abstractValue = document.getElementById('abstract').value;
             var keywordsValue = document.getElementById('keywords').value;
 
-            var newSection = document.createElement('section');
+            // Create a new document
+            var newDocument = document.implementation.createHTMLDocument('New Document');
+
+            // Create a new section in the new document
+            var newSection = newDocument.createElement('section');
             newSection.innerHTML = `
         <h1>${titleValue}</h1>
         
@@ -172,15 +176,20 @@
         </section>
 
         <section id="articleContent">
-            <p><strong>Abstract.</strong> ${abstractValue}</p>
+            <p><strong>Abstract:</strong> ${abstractValue}</p>
         </section>
 
         <section>
-            <p><strong>Keywords.</strong> ${keywordsValue}</p>
+            <p><strong>Keywords:</strong> ${keywordsValue}</p>
         </section>
     `;
 
-            document.body.appendChild(newSection);
+            // Append the new section to the new document body
+            newDocument.body.appendChild(newSection);
+
+            // Open the new document in a new window
+            var newWindow = window.open();
+            newWindow.document.write(newDocument.documentElement.outerHTML);
         }
     </script>
 </body>
