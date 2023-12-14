@@ -165,16 +165,12 @@
 
             // Create a new document
             var newDocument = document.implementation.createHTMLDocument('New Document');
-
-            // Create a new section in the new document
             var newSection = newDocument.createElement('section');
             newSection.innerHTML = `
         <h1>${titleValue}</h1>
-        
         <section>
             <p><strong>Authors:</strong> ${authorsValue}</p>
         </section>
-
         <section id="articleContent">
             <p><strong>Abstract:</strong> ${abstractValue}</p>
         </section>
@@ -184,10 +180,8 @@
         </section>
     `;
 
-            // Append the new section to the new document body
             newDocument.body.appendChild(newSection);
 
-            // Open the new document in a new window
             var newWindow = window.open();
             newWindow.document.write(newDocument.documentElement.outerHTML);
         }
